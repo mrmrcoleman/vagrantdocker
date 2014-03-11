@@ -2,16 +2,6 @@ notify { 'Preparing box for Docker!': }
 
 exec { "apt-get update":
   command => "/usr/bin/apt-get update",
-  before => Exec["apt-get install python-pip"]
-}
-
-exec { "apt-get install python-pip":
-  command => "/usr/bin/apt-get install python-pip -y",
-  before => Exec["install orchard"]
-}
-
-exec { "install orchard":
-  command => "/usr/bin/pip install orchard",
   before => Exec["apt-get updates extras"]
 }
 
@@ -41,7 +31,7 @@ exec { "apt-get update after updated list":
 }
 
 exec { "apt-get install lxc-docker":
-  command => "/usr/bin/apt-get install lxc-docker -y",
+  command => "/usr/bin/apt-get install lxc-docker-0.8.1 -y",
   before => Exec["apt-get install git"]
 }
 
